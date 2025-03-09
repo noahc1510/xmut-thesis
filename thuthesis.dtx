@@ -1923,10 +1923,10 @@
 \newcommand\thu@set@geometry{%
   \ifthu@degree@bachelor
     \geometry{
-      top        = 3.8cm,
-      bottom     = 3.2cm,
-      left       = 3.2cm,
-      right      = 3cm,
+      top        = 2.5cm,
+      bottom     = 2cm,
+      left       = 2.5cm,
+      right      = 2cm,
       headheight = 1.9cm,
       headsep    = 1.9cm,
       footskip   = 1.45cm,
@@ -3821,25 +3821,25 @@
   \ifthu@degree@bachelor
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        format     = \centering\sffamily\xiaosi\selectfont,
         aftername  = \quad,
         beforeskip = 30bp,
         afterskip  = 20bp,
       },
       section = {
-        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        format     = \xiaosi\selectfont,
         aftername  = \quad,
         beforeskip = 25bp,
         afterskip  = 12bp,
       },
       subsection = {
-        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        format     = \xiaosi\selectfont,
         aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
       subsubsection = {
-        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        format     = \xiaosi\selectfont,
         aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
@@ -3848,8 +3848,9 @@
     \ifthu@main@language@chinese
       \ctexset{
         chapter = {
-          name   = {第,章},
+          name   = {{},{}},
           number = \thechapter,
+          aftername = \quad,
         },
       }%
     \else
@@ -4084,11 +4085,11 @@
     \ifthu@main@language@chinese
       \titlecontents{chapter}
         [\z@]{\addvspace{6bp}
-          \ifthu@toc@chapter@style@arial
-            \sffamily
-          \else
-            \heiti
-          \fi
+          %\ifthu@toc@chapter@style@arial
+          %  \sffamily
+          %\else
+          %  \heiti
+          %\fi
         }
         {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
@@ -5191,9 +5192,9 @@
 % 标点符号一律用中文输入状态下的标点符号。
 %    \begin{macrocode}
 \newenvironment{abstract}{%
-  \ifthu@degree@bachelor
-    \cleardoublepage
-  \fi
+  %\ifthu@degree@bachelor
+  %  \cleardoublepage
+  %\fi
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
     \begingroup
@@ -5204,8 +5205,8 @@
       \fi
       \thu@chapter*{\thu@abstract@name}%
     \endgroup
-  \else
-    \thu@chapter*[]{\thu@abstract@name}%
+  \else 
+    \thu@chapter*[]{\thu@title}%
   \fi
 }{%
 %    \end{macrocode}
@@ -5218,13 +5219,13 @@
     \noindent
     \textsf{关键词：}%
   \else
-    \textbf{关键词：}%
+    \textbf{【关键词】}%
   \fi
   \thu@clist@use{\thu@keywords}{；}%
   \gdef\thu@keywords{}%
-  \ifthu@degree@bachelor
-    \cleardoublepage
-  \fi
+  %\ifthu@degree@bachelor
+  %  \cleardoublepage
+  %\fi
   \thu@reset@main@language % switch back to main language
 }
 %    \end{macrocode}
@@ -5235,14 +5236,14 @@
 % 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
 \newenvironment{abstract*}{%
-  \ifthu@degree@bachelor
-    \cleardoublepage
-  \fi
+  %\ifthu@degree@bachelor
+  %  \cleardoublepage
+  %\fi
   \thusetup{language = english}%
   \ifthu@degree@graduate
     \thu@chapter*{\thu@abstract@name@en}%
   \else
-    \thu@chapter*[]{\thu@abstract@name@en}%
+    \thu@chapter*[]{\thu@title@en}%
   \fi
 }{%
   \par
@@ -5250,7 +5251,7 @@
   \ifthu@degree@graduate
     \noindent
   \fi
-  \textbf{Keywords:}\space
+  \textbf{【Keywords】}\space
   \thu@clist@use{\thu@keywords@en}{; }%
   \ifthu@degree@graduate
     \vspace*{\stretch{1}}%
